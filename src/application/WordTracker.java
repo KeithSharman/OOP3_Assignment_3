@@ -3,6 +3,7 @@ package application;
 import java.io.*;
 import java.util.*;
 import implementations.*;
+import serialization.RepoManager;
 import utilities.Iterator;
 
 public class WordTracker {
@@ -29,9 +30,11 @@ public class WordTracker {
             this.outputFilePath = null;
         }
 
-   
+        wordTree = RepoManager.Load();
+        
         processFile(inputPath);
 
+        RepoManager.save(wordTree);
 
         generateReport();
     }
