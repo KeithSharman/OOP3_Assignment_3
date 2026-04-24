@@ -2,16 +2,14 @@ package implementations;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
-
-import utilities.BSTreeADT;
 import utilities.Iterator;
+import java.util.NoSuchElementException;
+import utilities.BSTreeADT;
 
 /**
  * BSTree is a linked-node-based implementation of a Binary Search Tree (BST).
  * Elements are ordered according to their natural ordering (Comparable).
  * Duplicate elements are not stored; attempting to add a duplicate is a no-op
- * that returns false.
  *
  * This class supports in-order, pre-order, and post-order traversal
  * via the Iterator interface, as well as serialization for tree persistence.

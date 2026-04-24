@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 public class Word implements Serializable, Comparable<Word> {
     private static final long serialVersionUID = 1L;
     
@@ -18,8 +19,16 @@ public class Word implements Serializable, Comparable<Word> {
 
     public void addOccurrence(String fileName, int lineNumber) {
         fileData.putIfAbsent(fileName, new ArrayList<>());
-        fileData.get(fileName).add(lineNumber);
+
+        ArrayList<Integer> lines = fileData.get(fileName);
+
+        // had to change this to prevent duplicate line numbers from being added
+        // The same word was appearing twice during testing 
+        if (!lines.contains(lineNumber)) {
+            lines.add(lineNumber);
+        }
     }
+
     @Override
     public int compareTo(Word other) {
         return this.word.compareTo(other.word);
